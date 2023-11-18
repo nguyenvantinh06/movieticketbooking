@@ -24,6 +24,7 @@ import VectorIcon from 'src/components/vector-icons';
 import {getSize} from 'src/hooks/use-resize-hoc';
 import {CurvedBottomBar} from 'react-native-curved-bottom-bar';
 import {COLORS} from 'src/config/theme';
+import SearchScreen from 'src/screens/SearchScreen';
 
 const Todo = () => {
   return (
@@ -122,7 +123,7 @@ const BottomTabStack = () => {
 
   const _renderIcon = (routeName: string, selectedTab: string) => {
     switch (routeName) {
-      case 'Tab1':
+      case SCENE_NAME.HOME_TAB:
         return (
           <VectorIcon.Feather
             name={'video'}
@@ -130,7 +131,7 @@ const BottomTabStack = () => {
             color={routeName === selectedTab ? COLORS.Orange : 'gray'}
           />
         );
-      case 'Tab2':
+      case SCENE_NAME.SEARCH_SCREEN:
         return (
           <VectorIcon.Feather
             name={'search'}
@@ -138,7 +139,7 @@ const BottomTabStack = () => {
             color={routeName === selectedTab ? COLORS.Orange : 'gray'}
           />
         );
-      case 'Tab3':
+      case SCENE_NAME.TICKET_SCREEN:
         return (
           <VectorIcon.Ionicons
             name={'ticket-outline'}
@@ -146,7 +147,7 @@ const BottomTabStack = () => {
             color={routeName === selectedTab ? COLORS.Orange : 'gray'}
           />
         );
-      case 'Tab4':
+      case SCENE_NAME.PROFILE_TAB:
         return (
           <VectorIcon.Feather
             name={'user'}
@@ -191,22 +192,22 @@ const BottomTabStack = () => {
       )}
       tabBar={renderTabBar}>
       <CurvedBottomBar.Screen
-        name="Tab1"
+        name={SCENE_NAME.HOME_TAB}
         position="LEFT"
         component={() => <HomeScreen />}
       />
       <CurvedBottomBar.Screen
-        name="Tab2"
-        component={() => <Todo />}
+        name={SCENE_NAME.SEARCH_SCREEN}
+        component={() => <SearchScreen />}
         position="LEFT"
       />
       <CurvedBottomBar.Screen
-        name="Tab3"
+        name={SCENE_NAME.TICKET_SCREEN}
         component={() => <Todo />}
         position="RIGHT"
       />
       <CurvedBottomBar.Screen
-        name="Tab4"
+        name={SCENE_NAME.PROFILE_TAB}
         component={() => <Todo />}
         position="RIGHT"
       />

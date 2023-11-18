@@ -19,6 +19,7 @@ import SignUpScreen from 'src/screens/auth/SignUpScreen';
 import OnboardingScreen from 'src/screens/OnboardingScreen';
 import MovieScreen from 'src/screens/MovieScreen';
 import PersonScreen from 'src/screens/PersonScreen';
+import SearchScreen from 'src/screens/SearchScreen';
 
 const Stack = createNativeStackNavigator();
 const AuthStack = createNativeStackNavigator();

@@ -2,15 +2,22 @@ import {View, Image, TouchableWithoutFeedback} from 'react-native';
 import React from 'react';
 import Carousel from 'react-native-snap-carousel';
 import {useNavigation} from '@react-navigation/native';
-// import {image500} from '../api/moviedb';
+import {image500} from 'src/apis/moviedb';
 import {SCENE_NAME, deviceHeight, deviceWidth} from 'src/utils/app-const';
 import AppText from './app-text';
+import NavigationService from 'src/navigation/navigations-service';
+import {MovieDto} from 'src/utils/data-dto';
+import AppImage from './app-image';
 
-export default function TrendingMovies({data}) {
+interface ITrendingMovies {
+  data: MovieDto[];
+}
+export default function TrendingMovies({data}: ITrendingMovies) {
   const navigation = useNavigation();
 
-  const handleClick = item => {
-    navigation.navigate(SCENE_NAME.MOVIE_SCREEN, item);
+  const handleClick = (item: MovieDto) => {
+    console.log('handleClick', item);
+    NavigationService.navigate(SCENE_NAME.MOVIE_SCREEN, {dataMovie: item});
   };
   return (
     <View className="mb-8">
@@ -21,8 +28,8 @@ export default function TrendingMovies({data}) {
           <MovieCard handleClick={handleClick} item={item} />
         )}
         firstItem={1}
-        // loop={true}
-        // inactiveSlideScale={0.86}
+        loop={true}
+        inactiveSlideScale={0.86}
         inactiveSlideOpacity={0.6}
         sliderWidth={deviceWidth}
         itemWidth={deviceWidth * 0.62}
@@ -35,9 +42,9 @@ export default function TrendingMovies({data}) {
 const MovieCard = ({item, handleClick}) => {
   return (
     <TouchableWithoutFeedback onPress={() => handleClick(item)}>
-      <Image
-        source={require('src/assets/images/moviePoster1.png')}
-        // source={{uri: image500(item.poster_path)}}
+      <AppImage
+        // source={require('src/assets/images/moviePoster1.png')}
+        source={{uri: image500(item.poster_path)}}
         style={{
           width: deviceWidth * 0.6,
           height: deviceHeight * 0.4,
