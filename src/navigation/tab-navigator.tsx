@@ -1,4 +1,11 @@
-import {Platform, Keyboard} from 'react-native';
+import {
+  Platform,
+  Keyboard,
+  StyleSheet,
+  TouchableOpacity,
+  Animated,
+  Alert,
+} from 'react-native';
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import _ from 'lodash';
@@ -13,9 +20,10 @@ import {
 import {SCENE_NAME} from 'src/utils/app-const';
 import {StackActions} from '@react-navigation/native';
 import HomeScreen from 'src/screens/HomeScreen';
-import BottomTabView from 'src/components/bottom-tab-view';
 import VectorIcon from 'src/components/vector-icons';
 import {getSize} from 'src/hooks/use-resize-hoc';
+import {CurvedBottomBar} from 'react-native-curved-bottom-bar';
+import {COLORS} from 'src/config/theme';
 
 const Todo = () => {
   return (
@@ -25,13 +33,12 @@ const Todo = () => {
   );
 };
 
-const Tab = createBottomTabNavigator();
 const Stack =
   createStackNavigator<
     Record<'HomeScreen' | 'NOTIFICATIONS_SCREEN', undefined>
   >();
 
-const HomeStack = React.memo(() => (
+const HomeStack = () => (
   <Stack.Navigator
     initialRouteName="HomeScreen"
     screenOptions={{
@@ -46,7 +53,7 @@ const HomeStack = React.memo(() => (
       component={NotificationsScreen}
     /> */}
   </Stack.Navigator>
-));
+);
 
 // const ProfileStack = React.memo(() => (
 //   <Stack.Navigator
@@ -69,23 +76,23 @@ const BottomTabStack = () => {
   // const {orientation} = useOrientation();
   const [visible, setVisible] = React.useState<boolean>(true);
   // hide bottom tab when keyboard show
-  React.useEffect(() => {
-    let keyboardEventListeners: any[];
-    if (Platform.OS === 'android') {
-      keyboardEventListeners = [
-        Keyboard.addListener('keyboardDidShow', () => setVisible(false)),
-        Keyboard.addListener('keyboardDidHide', () => setVisible(true)),
-      ];
-    }
-    return () => {
-      if (Platform.OS === 'android') {
-        keyboardEventListeners &&
-          keyboardEventListeners.forEach((eventListener: any) =>
-            eventListener.remove(),
-          );
-      }
-    };
-  }, []);
+  // React.useEffect(() => {
+  //   let keyboardEventListeners: any[];
+  //   if (Platform.OS === 'android') {
+  //     keyboardEventListeners = [
+  //       Keyboard.addListener('keyboardDidShow', () => setVisible(false)),
+  //       Keyboard.addListener('keyboardDidHide', () => setVisible(true)),
+  //     ];
+  //   }
+  //   return () => {
+  //     if (Platform.OS === 'android') {
+  //       keyboardEventListeners &&
+  //         keyboardEventListeners.forEach((eventListener: any) =>
+  //           eventListener.remove(),
+  //         );
+  //     }
+  //   };
+  // }, []);
 
   // React.useEffect(() => {
   //   if (orientation === 'PORTRAIT') {
@@ -113,71 +120,153 @@ const BottomTabStack = () => {
   //   };
   // };
 
+  const _renderIcon = (routeName: string, selectedTab: string) => {
+    switch (routeName) {
+      case 'Tab1':
+        return (
+          <VectorIcon.Feather
+            name={'video'}
+            size={25}
+            color={routeName === selectedTab ? COLORS.Orange : 'gray'}
+          />
+        );
+      case 'Tab2':
+        return (
+          <VectorIcon.Feather
+            name={'search'}
+            size={25}
+            color={routeName === selectedTab ? COLORS.Orange : 'gray'}
+          />
+        );
+      case 'Tab3':
+        return (
+          <VectorIcon.Ionicons
+            name={'ticket-outline'}
+            size={25}
+            color={routeName === selectedTab ? COLORS.Orange : 'gray'}
+          />
+        );
+      case 'Tab4':
+        return (
+          <VectorIcon.Feather
+            name={'user'}
+            size={25}
+            color={routeName === selectedTab ? COLORS.Orange : 'gray'}
+          />
+        );
+    }
+  };
+
+  const renderTabBar = ({routeName, selectedTab, navigate}: any) => {
+    return (
+      <TouchableOpacity
+        onPress={() => navigate(routeName)}
+        style={styles.tabbarItem}>
+        {_renderIcon(routeName, selectedTab)}
+      </TouchableOpacity>
+    );
+  };
+
   return (
-    <Tab.Navigator
-      initialRouteName={SCENE_NAME.HOME_TAB}
+    <CurvedBottomBar.Navigator
+      type="UP"
+      style={styles.bottomBar}
+      shadowStyle={styles.shadow}
+      height={55}
+      circleWidth={50}
+      bgColor="black"
+      initialRouteName="Tab1"
+      borderTopLeftRight
       screenOptions={{
         headerShown: false,
-      }}>
-      <Tab.Screen
-        name={SCENE_NAME.HOME_TAB}
-        component={HomeStack}
-        options={{
-          title: 'Home',
-          tabBarIcon: ({focused, color}) => (
-            // <TabBarIcon focused={focused} tintColor={color} name="home" />
-            <VectorIcon.Feather
-              name="home"
-              size={getSize.m(18)}
-              color={color}
-            />
-          ),
-        }}
-        // listeners={props => tabPressListener({...props})}
+      }}
+      renderCircle={({selectedTab, navigate}) => (
+        <Animated.View style={styles.btnCircleUp}>
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => Alert.alert('Click Action')}>
+            <VectorIcon.Ionicons name={'qr-code'} color="gray" size={25} />
+          </TouchableOpacity>
+        </Animated.View>
+      )}
+      tabBar={renderTabBar}>
+      <CurvedBottomBar.Screen
+        name="Tab1"
+        position="LEFT"
+        component={() => <HomeScreen />}
       />
-      <Tab.Screen
-        name={'Test2'}
-        component={Todo}
-        options={{
-          title: 'Groceries',
-          tabBarIcon: ({focused, color}) => (
-            <VectorIcon.FontAwesome
-              name="shopping-basket"
-              size={getSize.m(18)}
-              color={color}
-            />
-          ),
-        }}
+      <CurvedBottomBar.Screen
+        name="Tab2"
+        component={() => <Todo />}
+        position="LEFT"
       />
-      <Tab.Screen
-        name={'test3'}
-        component={Todo}
-        options={{
-          title: 'Likes',
-          tabBarIcon: ({focused, color}) => (
-            <VectorIcon.Feather
-              name="heart"
-              size={getSize.m(18)}
-              color={color}
-            />
-          ),
-        }}
+      <CurvedBottomBar.Screen
+        name="Tab3"
+        component={() => <Todo />}
+        position="RIGHT"
       />
-      <Tab.Screen
-        name={SCENE_NAME.PROFILE_TAB}
-        component={Todo}
-        options={{
-          title: 'Profile',
-          tabBarIcon: ({focused, color}) => (
-            <VectorIcon.Feather
-              name="user"
-              size={getSize.m(18)}
-              color={color}
-            />
-          ),
-        }}
+      <CurvedBottomBar.Screen
+        name="Tab4"
+        component={() => <Todo />}
+        position="RIGHT"
       />
-    </Tab.Navigator>
+    </CurvedBottomBar.Navigator>
   );
 };
 export default React.memo(BottomTabStack);
+
+const styles = StyleSheet.create({
+  shadow: {
+    shadowColor: '#DDDDDD',
+    shadowOffset: {
+      width: 0,
+      height: 0,
+    },
+    shadowOpacity: 1,
+    shadowRadius: 5,
+  },
+  button: {
+    flex: 1,
+    justifyContent: 'center',
+  },
+  bottomBar: {},
+  btnCircleUp: {
+    width: 60,
+    height: 60,
+    borderRadius: 30,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#E8E8E8',
+    bottom: 18,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.2,
+    shadowRadius: 1.41,
+    elevation: 1,
+  },
+  imgCircle: {
+    width: 30,
+    height: 30,
+    tintColor: 'gray',
+  },
+  tabbarItem: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  img: {
+    width: 30,
+    height: 30,
+  },
+  screen1: {
+    flex: 1,
+    backgroundColor: '#BFEFFF',
+  },
+  screen2: {
+    flex: 1,
+    backgroundColor: '#FFEBCD',
+  },
+});
