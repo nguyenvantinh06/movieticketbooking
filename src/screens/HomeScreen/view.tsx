@@ -89,7 +89,7 @@ export default function HomeScreen() {
 
           {/* top rated movies row */}
           {topRated.length > 0 && (
-            <MovieList title="Top Rated" data={topRated} />
+            <MovieList title="Top Rated" data={topRated} hasRating />
           )}
         </ScrollView>
       )}
