@@ -8,20 +8,22 @@ import {
 import React, {useCallback, useState} from 'react';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {useNavigation} from '@react-navigation/native';
-// import {fallbackMoviePoster, image185, searchMovies} from '../api/moviedb';
+import {fallbackMoviePoster, image185, searchMovies} from 'src/apis/moviedb';
 import {debounce} from 'lodash';
 import VectorIcon from 'src/components/vector-icons';
 import AppLoading from 'src/components/app-loading';
 import AppText from 'src/components/app-text';
 import AppImage from 'src/components/app-image';
 import {SCENE_NAME, deviceHeight, deviceWidth} from 'src/utils/app-const';
+import {MovieDto} from 'src/utils/data-dto';
+import NavigationService from 'src/navigation/navigations-service';
 
 export default function SearchScreen() {
   const navigation = useNavigation();
   const [loading, setLoading] = useState(false);
-  const [results, setResults] = useState([]);
+  const [results, setResults] = useState<MovieDto[]>([]);
 
-  const handleSearch = search => {
+  const handleSearch = (search: string) => {
     if (search && search.length > 2) {
       setLoading(true);
       searchMovies({
@@ -55,7 +57,6 @@ export default function SearchScreen() {
         <TouchableOpacity
           onPress={() => navigation.navigate(SCENE_NAME.HOME_TAB)}
           className="rounded-full p-3 m-1 bg-neutral-500">
-          {/* <XMarkIcon size="25" color="white" /> */}
           <VectorIcon.MaterialCommunityIcons
             name="close"
             size={25}
@@ -80,13 +81,17 @@ export default function SearchScreen() {
               return (
                 <TouchableWithoutFeedback
                   key={index}
-                  onPress={() => navigation.navigate('Movie', item)}>
+                  onPress={() =>
+                    NavigationService.navigate(SCENE_NAME.MOVIE_DETAIL_SCREEN, {
+                      dataMovie: item,
+                    })
+                  }>
                   <View className="space-y-2 mb-4">
                     <AppImage
-                      // source={{
-                      //   uri: image185(item.poster_path) || fallbackMoviePoster,
-                      // }}
-                      source={require('src/assets/images/moviePoster1.png')}
+                      source={{
+                        uri: image185(item?.poster_path) || fallbackMoviePoster,
+                      }}
+                      // source={require('src/assets/images/moviePoster1.png')}
                       className="rounded-3xl"
                       style={{
                         width: deviceWidth * 0.44,

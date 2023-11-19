@@ -30,10 +30,10 @@ export default function MovieList({title, hideSeeAll, data}: IMovieList) {
   return (
     <View className="mb-8 space-y-4">
       <View className="mx-4 flex-row justify-between items-center">
-        <AppText className="text-white text-lg">{title}</AppText>
+        <AppText className="text-white text-lg font-bold">{title}</AppText>
         {!hideSeeAll && (
           <TouchableOpacity>
-            <AppText style={styles.text} className="text-lg">
+            <AppText style={styles.text} className="text-lg font-bold">
               See All
             </AppText>
           </TouchableOpacity>
@@ -49,7 +49,7 @@ export default function MovieList({title, hideSeeAll, data}: IMovieList) {
             <TouchableWithoutFeedback
               key={index}
               onPress={() =>
-                NavigationService.navigate(SCENE_NAME.MOVIE_SCREEN, {
+                NavigationService.navigate(SCENE_NAME.MOVIE_DETAIL_SCREEN, {
                   dataMovie: item,
                 })
               }>

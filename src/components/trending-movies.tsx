@@ -17,11 +17,15 @@ export default function TrendingMovies({data}: ITrendingMovies) {
 
   const handleClick = (item: MovieDto) => {
     console.log('handleClick', item);
-    NavigationService.navigate(SCENE_NAME.MOVIE_SCREEN, {dataMovie: item});
+    NavigationService.navigate(SCENE_NAME.MOVIE_DETAIL_SCREEN, {
+      dataMovie: item,
+    });
   };
   return (
     <View className="mb-8">
-      <AppText className="text-white text-xl mx-4 mb-5">Trending</AppText>
+      <AppText className="text-white text-xl mx-4 mb-5 font-bold">
+        Trending
+      </AppText>
       <Carousel
         data={data}
         renderItem={({item}) => (

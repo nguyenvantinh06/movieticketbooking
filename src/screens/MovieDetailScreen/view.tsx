@@ -32,7 +32,7 @@ const topMargin = ios ? '' : ' mt-3';
 interface IMovieScreen {
   data: MovieDto;
 }
-export default function MovieScreen({data}: IMovieScreen) {
+export default function MovieDetailScreen({data}: IMovieScreen) {
   console.log('data: ' + data);
   const navigation = useNavigation();
   const [movie, setMovie] = useState<MovieDetailDto>();
