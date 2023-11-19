@@ -2,8 +2,9 @@ import {
   View,
   TextInput,
   TouchableOpacity,
-  ScrollView,
   TouchableWithoutFeedback,
+  FlatList,
+  StyleSheet,
 } from 'react-native';
 import React, {useCallback, useState} from 'react';
 import {SafeAreaView} from 'react-native-safe-area-context';
@@ -17,6 +18,7 @@ import AppImage from 'src/components/app-image';
 import {SCENE_NAME, deviceHeight, deviceWidth} from 'src/utils/app-const';
 import {MovieDto} from 'src/utils/data-dto';
 import NavigationService from 'src/navigation/navigations-service';
+import {SPACING} from 'src/config/theme';
 
 export default function SearchScreen() {
   const navigation = useNavigation();
@@ -44,6 +46,36 @@ export default function SearchScreen() {
 
   const handleTextDebounce = useCallback(debounce(handleSearch, 400), []);
 
+  const renderItemMovie = ({item, index}) => {
+    return (
+      <TouchableWithoutFeedback
+        key={index}
+        onPress={() =>
+          NavigationService.navigate(SCENE_NAME.MOVIE_DETAIL_SCREEN, {
+            dataMovie: item,
+          })
+        }>
+        <View className="space-y-2 mb-4 items-center mx-2">
+          <AppImage
+            source={{
+              uri: image185(item?.poster_path) || fallbackMoviePoster,
+            }}
+            // source={require('src/assets/images/moviePoster1.png')}
+            className="rounded-3xl"
+            style={{
+              width: deviceWidth * 0.44,
+              height: deviceHeight * 0.3,
+            }}
+          />
+          <AppText className="text-gray-300 ml-1">
+            {item.title.length > 22
+              ? item.title.slice(0, 22) + '...'
+              : item.title}
+          </AppText>
+        </View>
+      </TouchableWithoutFeedback>
+    );
+  };
   return (
     <SafeAreaView className="bg-neutral-800 flex-1">
       {/* search input */}
@@ -68,55 +100,39 @@ export default function SearchScreen() {
       {/* search results */}
       {loading ? (
         <AppLoading />
-      ) : results.length > 0 ? (
-        <ScrollView
-          showsVerticalScrollIndicator={false}
-          contentContainerStyle={{paddingHorizontal: 15}}
-          className="space-y-3">
-          <AppText className="text-white font-semibold ml-1">
-            Results ({results.length})
-          </AppText>
-          <View className="flex-row justify-between flex-wrap">
-            {results.map((item, index) => {
-              return (
-                <TouchableWithoutFeedback
-                  key={index}
-                  onPress={() =>
-                    NavigationService.navigate(SCENE_NAME.MOVIE_DETAIL_SCREEN, {
-                      dataMovie: item,
-                    })
-                  }>
-                  <View className="space-y-2 mb-4">
-                    <AppImage
-                      source={{
-                        uri: image185(item?.poster_path) || fallbackMoviePoster,
-                      }}
-                      // source={require('src/assets/images/moviePoster1.png')}
-                      className="rounded-3xl"
-                      style={{
-                        width: deviceWidth * 0.44,
-                        height: deviceHeight * 0.3,
-                      }}
-                    />
-                    <AppText className="text-gray-300 ml-1">
-                      {item.title.length > 22
-                        ? item.title.slice(0, 22) + '...'
-                        : item.title}
-                    </AppText>
-                  </View>
-                </TouchableWithoutFeedback>
-              );
-            })}
-          </View>
-        </ScrollView>
       ) : (
-        <View className="flex-row justify-center">
-          <AppImage
-            source={require('src/assets/images/movieTime.png')}
-            className="h-96 w-96"
-          />
-        </View>
+        <FlatList
+          data={results || []}
+          keyExtractor={(item: MovieDto) => item.id?.toString()}
+          bounces={false}
+          numColumns={2}
+          showsVerticalScrollIndicator={false}
+          // ListHeaderComponent={
+          //   <View style={styles.InputHeaderContainer}>
+          //     <InputHeader searchFunction={searchMoviesFunction} />
+          //   </View>
+          // }
+          contentContainerStyle={styles.centerContainer}
+          renderItem={renderItemMovie}
+          ListEmptyComponent={
+            <View className="flex-row justify-center">
+              <AppImage
+                source={require('src/assets/images/movieTime.png')}
+                className="h-96 w-96"
+              />
+            </View>
+          }
+          ListFooterComponent={
+            <View style={{paddingBottom: SPACING.space_36}} />
+          }
+        />
       )}
     </SafeAreaView>
   );
 }
+
+const styles = StyleSheet.create({
+  centerContainer: {
+    alignItems: 'center',
+  },
+});

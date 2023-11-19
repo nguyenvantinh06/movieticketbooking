@@ -122,7 +122,7 @@ const styles = StyleSheet.create({
   },
   genreContainer: {
     flexDirection: 'row',
-    gap: SPACING.space_20,
+    gap: SPACING.space_8,
     flexWrap: 'wrap',
     justifyContent: 'center',
   },
