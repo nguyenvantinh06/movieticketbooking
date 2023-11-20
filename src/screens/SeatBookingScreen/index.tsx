@@ -2,5 +2,6 @@ import React from 'react';
 import SeatBookingScreen from './view';
 
 export default function ({route}: any) {
-  return <SeatBookingScreen />;
+  const dataMovie = route.params?.dataMovie || {};
+  return <SeatBookingScreen dataMovie={dataMovie} />;
 }

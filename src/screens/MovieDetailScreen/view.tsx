@@ -183,7 +183,9 @@ export default function MovieDetailScreen({data}: IMovieScreen) {
       <TouchableOpacity
         style={styles.containerSelectSeat}
         onPress={() => {
-          NavigationService.navigate(SCENE_NAME.SEAT_BOOKING_SCREEN, {});
+          NavigationService.navigate(SCENE_NAME.SEAT_BOOKING_SCREEN, {
+            dataMovie: data,
+          });
         }}>
         <AppText style={styles.buttonText}>Select Seats</AppText>
       </TouchableOpacity>
