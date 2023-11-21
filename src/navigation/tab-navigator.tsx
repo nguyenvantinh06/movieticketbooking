@@ -25,6 +25,7 @@ import {getSize} from 'src/hooks/use-resize-hoc';
 import {CurvedBottomBar} from 'react-native-curved-bottom-bar';
 import {COLORS} from 'src/config/theme';
 import SearchScreen from 'src/screens/SearchScreen';
+import ProfileScreen from 'src/screens/ProfileScreen';
 
 const Todo = () => {
   return (
@@ -208,7 +209,7 @@ const BottomTabStack = () => {
       />
       <CurvedBottomBar.Screen
         name={SCENE_NAME.PROFILE_TAB}
-        component={() => <Todo />}
+        component={() => <ProfileScreen />}
         position="RIGHT"
       />
     </CurvedBottomBar.Navigator>

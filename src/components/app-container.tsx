@@ -129,14 +129,19 @@ const AppContainer = ({
                       : NavigationService.goBack()
                   }
                   activeOpacity={0.6}
-                  disabled={disabledIconLeft}>
+                  disabled={disabledIconLeft}
+                  style={{
+                    backgroundColor: COLORS.Orange,
+                    borderRadius: getSize.m(6),
+                    padding: getSize.m(2),
+                  }}>
                   {iconLeft ? (
                     <>{iconLeft}</>
                   ) : (
                     <VectorIcon.Entypo
                       name="chevron-left"
                       size={getSize.m(24)}
-                      color={theme.dark ? COLORS.DarkGrey : theme.colors.text}
+                      color={COLORS.White}
                     />
                   )}
                 </TouchableOpacity>

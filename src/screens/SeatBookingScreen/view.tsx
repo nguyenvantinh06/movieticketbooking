@@ -11,6 +11,7 @@ import {
   ToastAndroid,
   SafeAreaView,
   Platform,
+  Alert,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import {fallbackMoviePoster, image500} from 'src/apis/moviedb';
@@ -27,7 +28,7 @@ import {
 } from 'src/config/theme';
 import {getSize} from 'src/hooks/use-resize-hoc';
 import NavigationService from 'src/navigation/navigations-service';
-import {deviceHeight, deviceWidth} from 'src/utils/app-const';
+import {SCENE_NAME, deviceHeight, deviceWidth} from 'src/utils/app-const';
 import {generateDate, generateSeats, timeArray} from 'src/utils/app-utils';
 import {MovieDto} from 'src/utils/data-dto';
 // import EncryptedStorage from 'react-native-encrypted-storage';
@@ -55,9 +56,9 @@ const SeatBookingScreen = ({dataMovie}: ISeatBookingScreen) => {
         array.push(num);
         setSelectedSeatArray(array);
       } else {
-        const tempindex = array.indexOf(num);
-        if (tempindex > -1) {
-          array.splice(tempindex, 1);
+        const tempIndex = array.indexOf(num);
+        if (tempIndex > -1) {
+          array.splice(tempIndex, 1);
           setSelectedSeatArray(array);
         }
       }
@@ -88,18 +89,20 @@ const SeatBookingScreen = ({dataMovie}: ISeatBookingScreen) => {
           error,
         );
       }
-      NavigationService.navigate('Ticket', {
+      NavigationService.navigate(SCENE_NAME.TICKET_DETAIL_SCREEN, {
         seatArray: selectedSeatArray,
         time: timeArray[selectedTimeIndex],
         date: dateArray[selectedDateIndex],
-        ticketImage: route.params.PosterImage,
+        ticketImage: dataMovie.poster_path,
       });
     } else {
-      ToastAndroid.showWithGravity(
-        'Please Select Seats, Date and Time of the Show',
-        ToastAndroid.SHORT,
-        ToastAndroid.BOTTOM,
-      );
+      Platform.OS === 'android'
+        ? ToastAndroid.showWithGravity(
+            'Please Select Seats, Date and Time of the Show',
+            ToastAndroid.SHORT,
+            ToastAndroid.BOTTOM,
+          )
+        : Alert.alert('Please Select Seats, Date and Time of the Show');
     }
   };
 
@@ -261,7 +264,7 @@ const SeatBookingScreen = ({dataMovie}: ISeatBookingScreen) => {
   //   </ScrollView>
   // );
   return (
-    <View style={{flex: 1}}>
+    <View className="flex-1 bg-neutral-800">
       <ScrollView
         contentContainerStyle={{paddingBottom: 50}}
         className="flex-1 bg-neutral-900">

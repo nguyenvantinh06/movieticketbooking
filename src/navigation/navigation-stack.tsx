@@ -20,6 +20,7 @@ import OnboardingScreen from 'src/screens/OnboardingScreen';
 import PersonScreen from 'src/screens/PersonScreen';
 import MovieDetailScreen from 'src/screens/MovieDetailScreen';
 import SeatBookingScreen from 'src/screens/SeatBookingScreen';
+import TicketScreen from 'src/screens/TicketDetailScreen';
 
 const Stack = createNativeStackNavigator();
 const AuthStack = createNativeStackNavigator();
@@ -117,6 +118,10 @@ const LoggedInNavigator = () => {
       <Stack.Screen
         name={SCENE_NAME.SEAT_BOOKING_SCREEN}
         component={SeatBookingScreen}
+      />
+      <Stack.Screen
+        name={SCENE_NAME.TICKET_DETAIL_SCREEN}
+        component={TicketScreen}
       />
       {/* <Stack.Screen name={SCENE_NAME.CURRENT_TRIP_DETAIL_SCREEN}>
         {props => (
