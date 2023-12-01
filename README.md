@@ -7,6 +7,9 @@
 
 Download this beautiful free React Native starter kit, featuring a recipes app, to bootstrap your mobile app development. Learn React Native by working on a real project. Get familiar with various native components, navigation, redux and more.
 
+This is a simple movie app built with React Native and Tailwind CSS. It uses
+the [The Movie Database (TMDb) API](https://www.themoviedb.org/documentation/api) to fetch movies.
+
 <!-- # Getting Started -->
 
 <!-- > **Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding. -->
@@ -67,6 +70,12 @@ This is one way to run your app — you can also run it directly from within And
 - If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
 - If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
 
+### Get Started
+
+- Sign up over at [themoviedb.org](https://www.themoviedb.org) and get an API key.
+- Fork the project and clone it locally.
+- Change the .env.example file to .env. Update the content as below
+  
 ## Setup
 
 1. Clone the project:
@@ -120,3 +129,5 @@ To learn more about React Native, take a look at the following resources:
 - [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
 - [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
 - [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+
+✨ If you like this project, give it a ⭐
