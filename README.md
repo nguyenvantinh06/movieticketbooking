@@ -1,5 +1,8 @@
 # Movie App in React Native
 
+[![](https://img.shields.io/badge/Facebook-NguyenVanTinh-blue)](https://www.facebook.com/nguyenvantinh06.py/)
+[![](https://img.shields.io/badge/Gmail-nguyenvantinh06%40gmail.com-red)](mailto:nguyenvantinh06@gmail.com)
+
 <center><a href="https://instamobile.io/app-templates/food-app-template/"><img src="https://www.instamobile.io/wp-content/uploads/2019/07/Screen-Shot-2019-07-22-at-8.56.44-PM.png" /></a></center>
 
 Download this beautiful free React Native starter kit, featuring a recipes app, to bootstrap your mobile app development. Learn React Native by working on a real project. Get familiar with various native components, navigation, redux and more.
@@ -8,8 +11,16 @@ Download this beautiful free React Native starter kit, featuring a recipes app, 
 
 <!-- > **Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding. -->
 
-## Features
+## :star: Features
 
+- Authentication (Signup, Login, Reset Password).
+- Login with Touch/Face ID.
+- Real time update.
+- User Profile (Upload, Edit Profile Picture, Address).
+- Lottie Animation Icon (https://lottiefiles.com/)
+- Header Animation.
+- Add Items to Cart, to wishlist.
+- Place an seat.
 - Movie List
 - Categories
 - Ingredients
@@ -23,19 +34,10 @@ Download this beautiful free React Native starter kit, featuring a recipes app, 
 - Navigation Bar
 - Beautiful UI Design Kit
 
-## :star: Features
-
-- Authentication (Signup, Login, Reset Password).
-- Login with Touch/Face ID.
-- Real time update.
-- User Profile (Upload, Edit Profile Picture, Address).
-- Lottie Animation Icon (https://lottiefiles.com/)
-- Header Animation.
-- Add Items to Cart, to wishlist.
-- Place an seat.
   <!-- - Payment Methods: cash, credit card. -->
   <!-- - Push notification to user whenever order status, user information change. -->
   <!-- - Send email for reseting password as well as update order information. -->
+
 - Share Products to Social Media.
 - Review, Comment, Rating Product (In Processing)
 
@@ -64,6 +66,50 @@ This is one way to run your app — you can also run it directly from within And
 
 - If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
 - If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
+
+## Setup
+
+1. Clone the project:
+
+```bash
+git clone
+```
+
+2. Install dependencies
+
+```bash
+cd react-native-movie-app
+yarn install
+```
+
+3. Pod install for iOS
+
+```bash
+
+npx pod-install
+```
+
+4. Start Metro Bundler
+
+```bash
+yarn start
+```
+
+5. Open new terminals, build for iOS/Android
+
+```bash
+yarn ios
+```
+
+```bash
+yarn android
+```
+
+<!-- ### Demo
+<div style="display: flex; flex-wrap: wrap">
+ <img src=""  width="250">
+ <img src=""  width="250">
+</div> -->
 
 # Learn More
 
