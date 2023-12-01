@@ -1,12 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {
-  Text,
-  View,
-  StyleSheet,
-  ImageBackground,
-  Image,
-  ScrollView,
-} from 'react-native';
+import {View, StyleSheet, ImageBackground, ScrollView} from 'react-native';
 // import EncryptedStorage from 'react-native-encrypted-storage';
 
 import LinearGradient from 'react-native-linear-gradient';
@@ -16,6 +9,8 @@ import {image500} from '../apis/moviedb';
 import AppContainer from 'src/components/app-container';
 import AppText from 'src/components/app-text';
 import AppImage from 'src/components/app-image';
+import NavigationService from 'src/navigation/navigations-service';
+import {SCENE_NAME} from 'src/utils/app-const';
 
 const TicketScreen = ({navigation, route}: any) => {
   console.log('route.params', route.params);
@@ -38,12 +33,16 @@ const TicketScreen = ({navigation, route}: any) => {
     setTicketData(route.params);
   }
 
+  const onPressIconLeft = () => {
+    NavigationService.navigate(SCENE_NAME.TICKET_SCREEN);
+  };
   return (
     <AppContainer
       hasIconRight={false}
       title="My Tickets"
       styleHeader={{backgroundColor: COLORS.Black}}
-      styleTitle={{color: COLORS.White}}>
+      styleTitle={{color: COLORS.White}}
+      onPressIconLeft={onPressIconLeft}>
       <View style={styles.container}>
         <ScrollView>
           <View style={styles.ticketContainer}>

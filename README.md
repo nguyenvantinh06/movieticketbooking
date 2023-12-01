@@ -1,72 +1,69 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# Movie App in React Native
 
-# Getting Started
+<center><a href="https://instamobile.io/app-templates/food-app-template/"><img src="https://www.instamobile.io/wp-content/uploads/2019/07/Screen-Shot-2019-07-22-at-8.56.44-PM.png" /></a></center>
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+Download this beautiful free React Native starter kit, featuring a recipes app, to bootstrap your mobile app development. Learn React Native by working on a real project. Get familiar with various native components, navigation, redux and more.
 
-## Step 1: Start the Metro Server
+<!-- # Getting Started -->
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+<!-- > **Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding. -->
 
-To start Metro, run the following command from the _root_ of your React Native project:
+## Features
 
-```bash
-# using npm
-npm start
+- Movie List
+- Categories
+- Ingredients
+- Movie Details Screen
+- Detailed Description
+- Ingredients button
+- Ingredients List
+- Recipes by Ingredient
+- Search
+- Drawer Menu
+- Navigation Bar
+- Beautiful UI Design Kit
 
-# OR using Yarn
-yarn start
-```
+## :star: Features
 
-## Step 2: Start your Application
+- Authentication (Signup, Login, Reset Password).
+- Login with Touch/Face ID.
+- Real time update.
+- User Profile (Upload, Edit Profile Picture, Address).
+- Lottie Animation Icon (https://lottiefiles.com/)
+- Header Animation.
+- Add Items to Cart, to wishlist.
+- Place an seat.
+  <!-- - Payment Methods: cash, credit card. -->
+  <!-- - Push notification to user whenever order status, user information change. -->
+  <!-- - Send email for reseting password as well as update order information. -->
+- Share Products to Social Media.
+- Review, Comment, Rating Product (In Processing)
 
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
+## :star: Technical details
+
+- React Native
+- UI framework: React Native Paper
+- Intro slides: Animated, onScroll Event for animation.
+- Header Animation: Animated, React Animatable.
+- Form: Redux form validation.
+- Icon: Lottie, React native vector icon.
+- Payment: React native credit card, Stripe server for card validation checking.
+- Loader: Skeleton loader, Linear gradient.
+- Reducer: Redux.
+- Image Picker: React native image picker.
+- Deep Link: React native Linking.
+- Touch/Face ID: react native touch id, react native keychain, expo authentication
 
 ### For Android
-
-```bash
-# using npm
-npm run android
-
-# OR using Yarn
-yarn android
-```
-
-### For iOS
-
-```bash
-# using npm
-npm run ios
-
-# OR using Yarn
-yarn ios
-```
 
 If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
 
 This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
 
-## Step 3: Modifying your App
-
-Now that you have successfully run the app, let's modify it.
-
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
-
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
+## Feature
 
 - If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
 - If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
 
 # Learn More
 
