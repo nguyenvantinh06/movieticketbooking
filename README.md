@@ -5,10 +5,8 @@
 
 <center><a href="https://instamobile.io/app-templates/food-app-template/"><img src="https://www.instamobile.io/wp-content/uploads/2019/07/Screen-Shot-2019-07-22-at-8.56.44-PM.png" /></a></center>
 
-Download this beautiful free React Native starter kit, featuring a recipes app, to bootstrap your mobile app development. Learn React Native by working on a real project. Get familiar with various native components, navigation, redux and more.
-
-This is a simple movie app built with React Native and Tailwind CSS. It uses
-the [The Movie Database (TMDb) API](https://www.themoviedb.org/documentation/api) to fetch movies.
+The Movies App is a mobile application developed with React Native, enabling users to explore and discover information about movies. It uses
+the [The Movie Database (TMDb) API](https://www.themoviedb.org/documentation/api) to retrieve movie data, offering features such as searching for movies, viewing movie details, exploring trending movies, upcoming releases, top-rated movies, and accessing casting details. Additionally, I have incorporated various enhancements, including the ability to select seats, view ticket lists, and access profile information.
 
 <!-- # Getting Started -->
 
@@ -16,33 +14,30 @@ the [The Movie Database (TMDb) API](https://www.themoviedb.org/documentation/api
 
 ## :star: Features
 
+- Onboard Screen
 - Authentication (Signup, Login, Reset Password).
-- Login with Touch/Face ID.
-- Real time update.
-- User Profile (Upload, Edit Profile Picture, Address).
-- Lottie Animation Icon (https://lottiefiles.com/)
-- Header Animation.
-- Add Items to Cart, to wishlist.
-- Place an seat.
-- Movie List
-- Categories
-- Ingredients
-- Movie Details Screen
-- Detailed Description
-- Ingredients button
-- Ingredients List
-- Recipes by Ingredient
-- Search
+- Bottom navigation
+<!-- - Network connection state with SnackBar -->
+- Movie List (Pagination)
+- Share Movie to Social Media.
 - Drawer Menu
-- Navigation Bar
-- Beautiful UI Design Kit
+- Add movie to favorite
+- Place an seat
+- Lottie Animation Icon (https://lottiefiles.com/)
+- Search for any movie
+- View detailed information and synopsis of movies
+- Explore trending movies
+- Stay updated with upcoming movie releases
+- Discover top-rated movies
+- Explore the cast details of movies
+  <!-- - Login with Touch/Face ID. -->
+  <!-- - Real time update. -->
+  <!-- - Header Animation. -->
 
   <!-- - Payment Methods: cash, credit card. -->
   <!-- - Push notification to user whenever order status, user information change. -->
   <!-- - Send email for reseting password as well as update order information. -->
-
-- Share Products to Social Media.
-- Review, Comment, Rating Product (In Processing)
+  <!-- - Review, Comment, Rating Product (In Processing) -->
 
 ## :star: Technical details
 
@@ -50,14 +45,14 @@ the [The Movie Database (TMDb) API](https://www.themoviedb.org/documentation/api
 - UI framework: React Native Paper
 - Intro slides: Animated, onScroll Event for animation.
 - Header Animation: Animated, React Animatable.
-- Form: Redux form validation.
+<!-- - Form: Redux form validation. -->
 - Icon: Lottie, React native vector icon.
-- Payment: React native credit card, Stripe server for card validation checking.
+<!-- - Payment: React native credit card, Stripe server for card validation checking. -->
 - Loader: Skeleton loader, Linear gradient.
 - Reducer: Redux.
-- Image Picker: React native image picker.
+<!-- - Image Picker: React native image picker. -->
 - Deep Link: React native Linking.
-- Touch/Face ID: react native touch id, react native keychain, expo authentication
+<!-- - Touch/Face ID: react native touch id, react native keychain, expo authentication -->
 
 ### For Android
 
