@@ -1,5 +1,10 @@
 # Movie App in React Native
 
+[![React Native](https://img.shields.io/badge/React%20Native-v0.72.7-green.svg)](https://facebook.github.io/react-native/)
+![badge-Android](https://img.shields.io/badge/Platform-Android-brightgreen)
+![badge-iOS](https://img.shields.io/badge/Platform-iOS-lightgray)
+[![Redux](https://img.shields.io/badge/Redux-4.2.1-764ABC?logo=redux)](https://redux.js.org/)
+[![GitHub license](https://img.shields.io/badge/license-Apache%20License%202.0-blue.svg?style=flat)](https://www.apache.org/licenses/LICENSE-2.0)
 [![](https://img.shields.io/badge/Facebook-NguyenVanTinh-blue)](https://www.facebook.com/nguyenvantinh06.py/)
 [![](https://img.shields.io/badge/Gmail-nguyenvantinh06%40gmail.com-red)](mailto:nguyenvantinh06@gmail.com)
 
@@ -17,7 +22,6 @@ the [The Movie Database (TMDb) API](https://www.themoviedb.org/documentation/api
 - Onboard Screen
 - Authentication (Signup, Login, Reset Password).
 - Bottom navigation
-<!-- - Network connection state with SnackBar -->
 - Movie List (Pagination)
 - Share Movie to Social Media.
 - Drawer Menu
@@ -30,10 +34,11 @@ the [The Movie Database (TMDb) API](https://www.themoviedb.org/documentation/api
 - Stay updated with upcoming movie releases
 - Discover top-rated movies
 - Explore the cast details of movies
+
+<!-- - Network connection state with SnackBar -->
   <!-- - Login with Touch/Face ID. -->
   <!-- - Real time update. -->
   <!-- - Header Animation. -->
-
   <!-- - Payment Methods: cash, credit card. -->
   <!-- - Push notification to user whenever order status, user information change. -->
   <!-- - Send email for reseting password as well as update order information. -->
@@ -45,32 +50,51 @@ the [The Movie Database (TMDb) API](https://www.themoviedb.org/documentation/api
 - UI framework: React Native Paper
 - Intro slides: Animated, onScroll Event for animation.
 - Header Animation: Animated, React Animatable.
-<!-- - Form: Redux form validation. -->
 - Icon: Lottie, React native vector icon.
-<!-- - Payment: React native credit card, Stripe server for card validation checking. -->
 - Loader: Skeleton loader, Linear gradient.
 - Reducer: Redux.
-<!-- - Image Picker: React native image picker. -->
 - Deep Link: React native Linking.
+- TMDB API
+- Axios
+- NativeWind
+
+<!-- - Payment: React native credit card, Stripe server for card validation checking. -->
+<!-- - Image Picker: React native image picker. -->
+<!-- - Form: Redux form validation. -->
 <!-- - Touch/Face ID: react native touch id, react native keychain, expo authentication -->
 
-### For Android
+<!-- ## Architecture
 
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
+- Redux-based Architecture (action - reducer - sagas)
+- Hooks
+- Redux-Saga
+<p float="left">
+<a href='http://redux.js.org'><img src='https://camo.githubusercontent.com/f28b5bc7822f1b7bb28a96d8d09e7d79169248fc/687474703a2f2f692e696d6775722e636f6d2f4a65567164514d2e706e67' height='25' alt='Redux Logo' aria-label='redux.js.org' /></a>
 
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
+<a href='https://redux-saga.js.org/'><img src='https://redux-saga.js.org/img/Redux-Saga-Logo-Landscape.png' height='25' alt='Redux Logo' aria-label='redux-saga.js.org/' /></a>
 
-## Feature
+</p> -->
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
+## Built With 🛠
+
+- [React-Native](https://reactnative.dev/) - React Native brings React's declarative UI framework to iOS and Android. With React Native, you use native UI controls and have full access to the native platform..
+- [Redux](https://redux.js.org/) - Redux is an open-source JavaScript library for managing and centralizing application state. It is most commonly used with libraries such as React or Angular for building user interfaces.
+- [Redux-toolkit](https://redux-toolkit.js.org/) - The official, opinionated, batteries-included toolset for efficient Redux development
+- [Redux-Saga](https://redux-saga.js.org/) - An intuitive Redux side effect manager.
+- [React-Navigation 6](https://reactnavigation.org/) - Routing and navigation for your React Native apps.
+- [Axios](https://github.com/axios/axios) - Promise based HTTP client for the browser and node.js
+
+## Requirements
+
+- [Node.js](https://nodejs.org/) (latest)
+- [Yarn](https://yarnpkg.com/) (latest)
 
 ### Get Started
 
 - Sign up over at [themoviedb.org](https://www.themoviedb.org) and get an API key.
 - Fork the project and clone it locally.
-- Change the .env.example file to .env. Update the content as below
-  
+- Use that api key in constants/index.js file
+
 ## Setup
 
 1. Clone the project:
@@ -82,7 +106,7 @@ git clone
 2. Install dependencies
 
 ```bash
-cd react-native-movie-app
+cd movieticketbooking
 yarn install
 ```
 
@@ -109,11 +133,12 @@ yarn ios
 yarn android
 ```
 
-<!-- ### Demo
+### Demo
+
 <div style="display: flex; flex-wrap: wrap">
- <img src=""  width="250">
- <img src=""  width="250">
-</div> -->
+ <img src="./src/assets/intro/home.png"  width="250">
+ <img src="./src/assets/intro/home_movie.png"  width="250">
+</div>
 
 # Learn More
 
