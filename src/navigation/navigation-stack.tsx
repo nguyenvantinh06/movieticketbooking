@@ -17,8 +17,10 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import LoginScreen from 'src/screens/auth/LoginScreen';
 import SignUpScreen from 'src/screens/auth/SignUpScreen';
 import OnboardingScreen from 'src/screens/OnboardingScreen';
-import MovieScreen from 'src/screens/MovieScreen';
 import PersonScreen from 'src/screens/PersonScreen';
+import MovieDetailScreen from 'src/screens/MovieDetailScreen';
+import SeatBookingScreen from 'src/screens/SeatBookingScreen';
+import TicketScreen from 'src/screens/TicketDetailScreen';
 
 const Stack = createNativeStackNavigator();
 const AuthStack = createNativeStackNavigator();
@@ -108,8 +110,19 @@ const LoggedInNavigator = () => {
       // initialRouteName={SCENE_NAME.ERROR_UNDER_CONSTRUCTION}
       screenOptions={{headerShown: false}}>
       <Stack.Screen name={SCENE_NAME.ROOT} component={BottomTabStack} />
-      <Stack.Screen name={SCENE_NAME.MOVIE_SCREEN} component={MovieScreen} />
+      <Stack.Screen
+        name={SCENE_NAME.MOVIE_DETAIL_SCREEN}
+        component={MovieDetailScreen}
+      />
       <Stack.Screen name={SCENE_NAME.PERSON_SCREEN} component={PersonScreen} />
+      <Stack.Screen
+        name={SCENE_NAME.SEAT_BOOKING_SCREEN}
+        component={SeatBookingScreen}
+      />
+      <Stack.Screen
+        name={SCENE_NAME.TICKET_DETAIL_SCREEN}
+        component={TicketScreen}
+      />
       {/* <Stack.Screen name={SCENE_NAME.CURRENT_TRIP_DETAIL_SCREEN}>
         {props => (
           <CurrentTripDetail

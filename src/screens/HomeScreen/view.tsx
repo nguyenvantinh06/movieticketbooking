@@ -9,11 +9,12 @@ import {
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
 import {SafeAreaView} from 'react-native-safe-area-context';
-// import {
-//   fetchTopRatedMovies,
-//   fetchTrendingMovies,
-//   fetchUpcomingMovies,
-// } from '../api/moviedb';
+import {
+  fetchTopRatedMovies,
+  fetchTrendingMovies,
+  fetchUpcomingMovies,
+  nowPlayingMovies,
+} from 'src/apis/moviedb';
 import {useNavigation} from '@react-navigation/native';
 import AppText from 'src/components/app-text';
 import VectorIcon from 'src/components/vector-icons';
@@ -21,38 +22,40 @@ import AppLoading from 'src/components/app-loading';
 import MovieList from 'src/components/movie-list';
 import TrendingMovies from 'src/components/trending-movies';
 import {COLORS, STYLE_GLOBAL} from 'src/config/theme';
+import {SCENE_NAME} from 'src/utils/app-const';
+import {MovieDto} from 'src/utils/data-dto';
 
 const ios = Platform.OS === 'ios';
 
 export default function HomeScreen() {
-  const [trending, setTrending] = useState([1, 2, 3]);
-  const [upcoming, setUpcoming] = useState([1, 2, 3]);
-  const [topRated, setTopRated] = useState([1, 2, 3]);
+  const [trending, setTrending] = useState<MovieDto[]>([]);
+  const [upcoming, setUpcoming] = useState<MovieDto[]>([]);
+  const [topRated, setTopRated] = useState<MovieDto[]>([]);
   const [loading, setLoading] = useState(false);
   const navigation = useNavigation();
 
-  //   useEffect(() => {
-  //     getTrendingMovies();
-  //     getUpcomingMovies();
-  //     getTopRatedMovies();
-  //   }, []);
+  useEffect(() => {
+    getTrendingMovies();
+    getUpcomingMovies();
+    getTopRatedMovies();
+  }, []);
 
-  //   const getTrendingMovies = async () => {
-  //     const data = await fetchTrendingMovies();
-  //     console.log('got trending', data.results.length);
-  //     if (data && data.results) setTrending(data.results);
-  //     setLoading(false);
-  //   };
-  //   const getUpcomingMovies = async () => {
-  //     const data = await fetchUpcomingMovies();
-  //     console.log('got upcoming', data.results.length);
-  //     if (data && data.results) setUpcoming(data.results);
-  //   };
-  //   const getTopRatedMovies = async () => {
-  //     const data = await fetchTopRatedMovies();
-  //     console.log('got top rated', data.results.length);
-  //     if (data && data.results) setTopRated(data.results);
-  //   };
+  const getTrendingMovies = async () => {
+    const data = await fetchTrendingMovies();
+    console.log('got trending', data.results);
+    if (data && data.results) setTrending(data.results);
+    setLoading(false);
+  };
+  const getUpcomingMovies = async () => {
+    const data = await fetchUpcomingMovies();
+    console.log('got upcoming', data.results);
+    if (data && data.results) setUpcoming(data.results);
+  };
+  const getTopRatedMovies = async () => {
+    const data = await fetchTopRatedMovies();
+    console.log('got top rated', data.results);
+    if (data && data.results) setTopRated(data.results);
+  };
 
   return (
     <View className="flex-1 bg-neutral-800">
@@ -64,7 +67,8 @@ export default function HomeScreen() {
           <AppText className="text-white text-3xl font-bold">
             <AppText style={styles.textMovie}>M</AppText>ovies
           </AppText>
-          <TouchableOpacity onPress={() => navigation.navigate('Search')}>
+          <TouchableOpacity
+            onPress={() => navigation.navigate(SCENE_NAME.SEARCH_SCREEN)}>
             <VectorIcon.Feather size={30} color="white" name="search" />
           </TouchableOpacity>
         </View>
@@ -85,7 +89,7 @@ export default function HomeScreen() {
 
           {/* top rated movies row */}
           {topRated.length > 0 && (
-            <MovieList title="Top Rated" data={topRated} />
+            <MovieList title="Top Rated" data={topRated} hasRating />
           )}
         </ScrollView>
       )}

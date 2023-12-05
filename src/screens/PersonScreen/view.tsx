@@ -1,10 +1,7 @@
 import {
   View,
-  Text,
-  Image,
   TouchableOpacity,
   Platform,
-  Dimensions,
   ScrollView,
   StyleSheet,
 } from 'react-native';
@@ -17,48 +14,51 @@ import AppLoading from 'src/components/app-loading';
 import AppImage from 'src/components/app-image';
 import AppText from 'src/components/app-text';
 import MovieList from 'src/components/movie-list';
-// import {
-//   fallbackPersonImage,
-//   fetchPersonDetails,
-//   fetchPersonMovies,
-//   image185,
-//   image342,
-//   image500,
-// } from '../api/moviedb';
+import {
+  fallbackPersonImage,
+  fetchPersonDetails,
+  fetchPersonMovies,
+  image185,
+  image342,
+  image500,
+} from 'src/apis/moviedb';
+import {deviceHeight, deviceWidth} from 'src/utils/app-const';
+import {CastDto, MovieDto} from 'src/utils/data-dto';
 
 const ios = Platform.OS == 'ios';
 const verticalMargin = ios ? '' : ' my-3';
-var {width, height} = Dimensions.get('window');
 
-export default function PersonScreen() {
-  const {params: item} = useRoute();
+interface IPersonScreen {
+  data: CastDto;
+}
+export default function PersonScreen({data}: IPersonScreen) {
   const [isFavorite, toggleFavorite] = useState(false);
   const navigation = useNavigation();
-  const [person, setPerson] = useState({id: 1});
-  const [personMovies, setPersonMovies] = useState([1, 2, 3, 4, 5]);
+  const [person, setPerson] = useState<CastDto>();
+  const [personMovies, setPersonMovies] = useState<MovieDto[]>([]);
   const [loading, setLoading] = useState(false);
 
-  // useEffect(() => {
-  //   setLoading(true);
-  //   getPersonDetails(item.id);
-  //   getPersonMovies(item.id);
-  // }, [item]);
+  useEffect(() => {
+    setLoading(true);
+    getPersonDetails(data.id);
+    getPersonMovies(data.id);
+  }, [data]);
 
-  // const getPersonDetails = async id => {
-  //   const data = await fetchPersonDetails(id);
-  //   console.log('got person details');
-  //   setLoading(false);
-  //   if (data) {
-  //     setPerson(data);
-  //   }
-  // };
-  // const getPersonMovies = async id => {
-  //   const data = await fetchPersonMovies(id);
-  //   console.log('got person movies');
-  //   if (data && data.cast) {
-  //     setPersonMovies(data.cast);
-  //   }
-  // };
+  const getPersonDetails = async (id: number) => {
+    const data = await fetchPersonDetails(id);
+    console.log('got person details', data);
+    setLoading(false);
+    if (data) {
+      setPerson(data);
+    }
+  };
+  const getPersonMovies = async (id: number) => {
+    const data = await fetchPersonMovies(id);
+    console.log('got person movies');
+    if (data && data.cast) {
+      setPersonMovies(data.cast);
+    }
+  };
 
   return (
     <ScrollView
@@ -104,23 +104,23 @@ export default function PersonScreen() {
             }}>
             <View className="items-center rounded-full overflow-hidden h-72 w-72 border-neutral-500 border-2">
               <AppImage
-                source={require('src/assets/images/avatar.png')}
-                // source={{
-                //   uri: image342(person?.profile_path) || fallbackPersonImage,
-                // }}
-                style={{height: height * 0.43, width: width * 0.74}}
+                // source={require('src/assets/images/avatar.png')}
+                source={{
+                  uri: image342(person?.profile_path) || fallbackPersonImage,
+                }}
+                style={{height: deviceHeight * 0.43, width: deviceWidth * 0.74}}
               />
             </View>
           </View>
 
           <View className="mt-6">
             <AppText className="text-3xl text-white font-bold text-center">
-              Person Name
-              {/* {person?.name} */}
+              {/* Person Name */}
+              {person?.name}
             </AppText>
             <AppText className="text-neutral-500 text-base text-center">
-              {/* {person?.place_of_birth} */}
-              USA
+              {person?.place_of_birth}
+              {/* USA */}
             </AppText>
           </View>
 
@@ -128,28 +128,29 @@ export default function PersonScreen() {
             <View className="border-r-2 border-r-neutral-400 px-2 items-center">
               <AppText className="text-white font-semibold ">Gender</AppText>
               <AppText className="text-neutral-300 text-sm">
-                Male
-                {/* {person?.gender == 1 ? 'Female' : 'Male'} */}
+                {/* Male */}
+                {person?.gender == 1 ? 'Female' : 'Male'}
               </AppText>
             </View>
             <View className="border-r-2 border-r-neutral-400 px-2 items-center">
               <AppText className="text-white font-semibold">Birthday</AppText>
               <AppText className="text-neutral-300 text-sm">
-                1964-09-02
-                {/* {person?.birthday} */}
+                {/* 1964-09-02 */}
+                {person?.birthday}
               </AppText>
             </View>
             <View className="border-r-2 border-r-neutral-400 px-2 items-center">
               <AppText className="text-white font-semibold">known for</AppText>
               <AppText className="text-neutral-300 text-sm">
-                Acting
-                {/* {person?.known_for_department} */}
+                {/* Acting */}
+                {person?.known_for_department}
               </AppText>
             </View>
             <View className="px-2 items-center">
               <AppText className="text-white font-semibold">Popularity</AppText>
               <AppText className="text-neutral-300 text-sm">
-                84.23 %{/* {person?.popularity?.toFixed(2)} % */}
+                {/* 84.23 % */}
+                {person?.popularity?.toFixed(2)} %
               </AppText>
             </View>
           </View>
@@ -161,7 +162,7 @@ export default function PersonScreen() {
           </View>
 
           {/* person movies */}
-          {person?.id && personMovies.length > 0 && (
+          {person?.id && personMovies?.length > 0 && (
             <MovieList title="Movies" hideSeeAll={true} data={personMovies} />
           )}
         </View>

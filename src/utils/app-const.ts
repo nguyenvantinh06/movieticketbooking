@@ -16,8 +16,12 @@ export enum SCENE_NAME {
   HOME_TAB = 'HOME_TAB',
   ON_BOARDING = 'ON_BOARDING',
   PROFILE_TAB = 'PROFILE_TAB',
-  MOVIE_SCREEN = 'MOVIE_SCREEN',
+  MOVIE_DETAIL_SCREEN = 'MOVIE_DETAIL_SCREEN',
   PERSON_SCREEN = 'PERSON_SCREEN',
+  SEARCH_SCREEN = 'SEARCH_SCREEN',
+  TICKET_SCREEN = 'TICKET_SCREEN',
+  SEAT_BOOKING_SCREEN = 'SEAT_BOOKING_SCREEN',
+  TICKET_DETAIL_SCREEN = 'TICKET_DETAIL_SCREEN',
 }
 
 export const REGEX_DATE_SHORT =
@@ -34,3 +38,25 @@ export const hitSlop = {
 
 export const DEFAULT_AVATAR =
   'https://t4.ftcdn.net/jpg/05/49/98/39/360_F_549983970_bRCkYfk0P6PP5fKbMhZMIb07mCJ6esXL.jpg';
+
+export const genres: any = {
+  28: 'Action',
+  12: 'Adventure',
+  16: 'Animation',
+  35: 'Comedy',
+  80: 'Crime',
+  99: 'Documentary',
+  18: 'Drama',
+  10751: 'Family',
+  14: 'Fantasy',
+  36: 'History',
+  27: 'Horror',
+  10402: 'Music',
+  9648: 'Mystery',
+  10749: 'Romance',
+  878: 'Science Fiction',
+  10770: 'TV Movie',
+  53: 'Thriller',
+  10752: 'War',
+  37: 'Western',
+};
