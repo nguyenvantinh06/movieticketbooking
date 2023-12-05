@@ -136,9 +136,7 @@ yarn android
 ### Demo
 
 <div style="display: flex; flex-wrap: wrap">
-  <div style="margin: 12px;">
-    <img src="./src/assets/intro/home.png" width="250">
-  </div>
+ <img src="./src/assets/intro/home.png" width="250" style="margin: 12px">
  <img src="./src/assets/intro/home_movie.png" width="250" style="margin: 12px">
  <img src="./src/assets/intro/movie_detail.png" width="250" style="margin: 12px">
 </div>
