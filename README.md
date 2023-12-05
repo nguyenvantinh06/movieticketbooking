@@ -136,19 +136,19 @@ yarn android
 ### Demo
 
 <div style="display: flex; flex-wrap: wrap">
- <img src="./src/assets/intro/home.png" width="250" margin="12px">
- <img src="./src/assets/intro/home_movie.png" width="250" margin="12px">
- <img src="./src/assets/intro/movie_detail.png" width="250" margin="12px">
+ <img src="./src/assets/intro/home.png" width="250" style="margin: 12px">
+ <img src="./src/assets/intro/home_movie.png" width="250" style="margin: 12px">
+ <img src="./src/assets/intro/movie_detail.png" width="250" style="margin: 12px">
 </div>
 <div style="display: flex; flex-wrap: wrap">
- <img src="./src/assets/intro/actor_detail.png" width="250" margin="12px">
- <img src="./src/assets/intro/actor_film.png" width="250" margin="12px">
- <img src="./src/assets/intro/search.png" width="250" margin="12px">
+ <img src="./src/assets/intro/actor_detail.png" width="250" style="margin: 12px">
+ <img src="./src/assets/intro/actor_film.png" width="250" style="margin: 12px">
+ <img src="./src/assets/intro/search.png" width="250" style="margin: 12px">
 </div>
 <div style="display: flex; flex-wrap: wrap">
- <img src="./src/assets/intro/empty_search.png" width="250" margin="12px">
- <img src="./src/assets/intro/select_seat.png" width="250" margin="12px">
- <img src="./src/assets/intro/ticket.png" width="250" margin="12px">
+ <img src="./src/assets/intro/empty_search.png" width="250" style="margin: 12px">
+ <img src="./src/assets/intro/select_seat.png" width="250" style="margin: 12px">
+ <img src="./src/assets/intro/ticket.png" width="250" style="margin: 12px">
 </div>
 
 # Learn More
