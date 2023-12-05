@@ -8,7 +8,7 @@
 [![](https://img.shields.io/badge/Facebook-NguyenVanTinh-blue)](https://www.facebook.com/nguyenvantinh06.py/)
 [![](https://img.shields.io/badge/Gmail-nguyenvantinh06%40gmail.com-red)](mailto:nguyenvantinh06@gmail.com)
 
-<center><a href="https://instamobile.io/app-templates/food-app-template/"><img src="https://www.instamobile.io/wp-content/uploads/2019/07/Screen-Shot-2019-07-22-at-8.56.44-PM.png" /></a></center>
+<center><img src="./src/assets/intro/movie-app.png" /></center>
 
 The Movies App is a mobile application developed with React Native, enabling users to explore and discover information about movies. It uses
 the [The Movie Database (TMDb) API](https://www.themoviedb.org/documentation/api) to retrieve movie data, offering features such as searching for movies, viewing movie details, exploring trending movies, upcoming releases, top-rated movies, and accessing casting details. Additionally, I have incorporated various enhancements, including the ability to select seats, view ticket lists, and access profile information.
@@ -138,6 +138,17 @@ yarn android
 <div style="display: flex; flex-wrap: wrap">
  <img src="./src/assets/intro/home.png"  width="250">
  <img src="./src/assets/intro/home_movie.png"  width="250">
+ <img src="./src/assets/intro/movie_detail.png"  width="250">
+</div>
+<div style="display: flex; flex-wrap: wrap">
+ <img src="./src/assets/intro/actor_detail.png"  width="250">
+ <img src="./src/assets/intro/actor_film.png"  width="250">
+ <img src="./src/assets/intro/search.png"  width="250">
+</div>
+<div style="display: flex; flex-wrap: wrap">
+ <img src="./src/assets/intro/empty_search.png"  width="250">
+ <img src="./src/assets/intro/select_seat.png"  width="250">
+ <img src="./src/assets/intro/ticket.png"  width="250">
 </div>
 
 # Learn More
